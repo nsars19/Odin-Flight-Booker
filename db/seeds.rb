@@ -29,18 +29,20 @@ def random from = 21, to = 30
   rand from..to
 end
 
-flights = []
+def create_flights
+  flights = []
 
-1000.times do
-  start = random_date
-  finish = start + random(2, 12).hour
+  1000.times do
+    start = random_date
+    finish = start + random(2, 12).hour
 
-  flights << {start: start, 
-              finish: finish, 
-              from_airport_id: random, 
-              to_airport_id: random}
+    flights << {start: start, 
+                finish: finish, 
+                from_airport_id: random, 
+                to_airport_id: random}
+  end
 end
 
-
+create_flights
 airports.each { |airport| Airport.create airport } unless Airport.any?
 flights.each { |flight| Flight.create flight }
