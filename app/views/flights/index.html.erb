@@ -1,0 +1,23 @@
+<%= form_with(url: flights_path, method: "get") do %>
+  <div class='flights-from'>
+    <%= label_tag(:from_airport, "Departing From:") %>
+    <%= select(:from_airport, :id, options_for_select(@airport_options)) %>
+  </div>
+  <div class='flights-to'>
+    <%= label_tag(:to_airport, "Arriving At:") %>
+    <%= select(:to_airport, :id, options_for_select(@airport_options)) %>
+  </div>  
+  <div class='passenger-count'>
+    <%= label_tag :num_passengers, "Passengers:" %>
+    <%= select_tag :num_passengers, options_for_select((1..5)) %>
+  </div>
+  <div class="flight-date">
+    <%= label_tag(:flight_date, "Flight Date:") %>
+    <%= select_month Date.today %>
+    <%= select_day Date.today %>
+    <%= select_year  Date.today, start_year: Date.today.year, end_year: 4.years.from_now.year %>
+  </div>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<%= @new_params if @new_params %>
