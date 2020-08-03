@@ -41,8 +41,9 @@ def create_flights
                 from_airport_id: random, 
                 to_airport_id: random}
   end
+  
+  flights.each { |flight| Flight.create flight }
 end
 
 create_flights
 airports.each { |airport| Airport.create airport } unless Airport.any?
-flights.each { |flight| Flight.create flight }
