@@ -32,7 +32,7 @@ end
 def create_flights
   flights = []
 
-  1000.times do
+  10000.times do
     start = random_date
     finish = start + random(2, 12).hour
 
