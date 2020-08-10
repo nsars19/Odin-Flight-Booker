@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Airport.delete_all unless Airport.any?
+
+# Airport.delete_all unless Airport.any?
 Flight.delete_all
 
 airports = [
@@ -22,7 +23,11 @@ airports = [
 ]
 
 def random_date
-  Time.now + (rand(12) + 1).month
+  Time.now + rand(13).month + 
+             rand(31).day +
+             rand(13).hour + 
+             rand(60).minute +
+             rand(60).second
 end
 
 def random from = 21, to = 30
@@ -32,12 +37,13 @@ end
 def create_flights
   flights = []
 
-  10000.times do
+  20000.times do
     start = random_date
-    finish = start + random(2, 12).hour
+    finish = start + random(2, 12).hour + rand(60).minute
 
-    flights << {start: start, 
-                finish: finish, 
+    flights << {flight_date: Date.parse(start.to_s), 
+                departure_time: start.strftime("%H:%M"),
+                arrival_time: finish.strftime("%H:%M"),
                 from_airport_id: random, 
                 to_airport_id: random}
   end
