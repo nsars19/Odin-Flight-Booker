@@ -1,0 +1,21 @@
+<div class='flight-info'>
+  <span>
+    <li>Flight: <%= @flight.id %></li>
+    <li>Date: <%= @flight.flight_date %></li>
+    <li>Departing From: <%= @flight.from_airport.name %></li>
+    <li>Arriving At: <%= @flight.from_airport.name %></li>
+    <li>Departing Time: <%= @flight.departure_time %></li>
+    <li>Arriving Time: <%= @flight.arrival_time %></li>
+    <li># of Passengers: <%= params[:num_passengers] %></li><br />
+  </span>
+</div>  
+<div class='booking-form'>
+  <% form_for @booking do |f| %>
+    <% fields_for @booking.passenger do |p| %>
+      <%= p.label :name, 'Name' %>
+      <%= p.text_field :name %>
+      <%= p.label :email, 'Email' %>
+      <%= p.text_field :email %>
+    <% end %>  
+  <% end %>
+</div>
