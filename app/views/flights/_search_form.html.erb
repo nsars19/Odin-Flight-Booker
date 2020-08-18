@@ -1,0 +1,23 @@
+<div class='flight-form'>
+  <%= form_with url: flights_path, method: :get, local: true do %>
+    <div class='flights-from'>
+      <%= label_tag :from_airport_id, "Departing From:"  %>
+      <%= select_tag :from_airport_id, options_for_select(@airports)  %>
+    </div>
+    <div class='flights-to'>
+      <%= label_tag :to_airport_id, "Arriving At:"  %>
+      <%= select_tag :to_airport_id, options_for_select(@airports)  %>
+    </div>  
+    <div class='passenger-count'>
+      <%= label_tag :num_passengers, "Passengers:" %>
+      <%= select_tag :num_passengers, options_for_select(1..5) %>
+    </div>
+    <div class="flight-date">
+      <%= label_tag :flight_date, "Flight Date:" %>
+      <%= select_tag :flight_month, options_for_select(@months) %>
+      <%= select_tag :flight_day, options_for_select(@days) %>
+      <%= select_tag :flight_year, options_for_select(@years) %>
+    </div>
+    <%= submit_tag "Search"  %>
+  <% end %>
+</div> 
