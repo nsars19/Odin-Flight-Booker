@@ -1,0 +1,17 @@
+<button><%= link_to "Back", flights_path %></button>
+<div>Flight Info:
+  <div style='padding-left: 10px'> 
+    <p>Flight #: <%= @flight.id %></p>
+    <p><%= @flight.from_airport.name %> -> <%= @flight.to_airport.name %></p>
+    <p><%= @flight.flight_date %></p>
+    <p><%= @flight.departure_time %> - <%= @flight.arrival_time %></p>
+  </div>
+</div>  
+<div>Passenger Info:
+  <div style='padding-left: 10px'>
+    <% @passengers.each do |p| %>
+      <p>Name: <%= p.name %></p>
+      <p>Email: <%= p.email %></p>
+    <% end %>  
+  </div>  
+</div>

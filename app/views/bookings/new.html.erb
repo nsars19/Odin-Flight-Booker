@@ -10,7 +10,9 @@
   </div>
 </div>  
 <div class='booking-form'>
-  <%= form_for @booking do |f| %>
+  <%= form_for @booking, local: true do |f| %>
+    <%= f.hidden_field :flight_id, value: params[:selected_flight] %>
+
     <%= f.fields_for :passengers do |p| %>
       <div>
         <%= p.label :name, 'Name' %>
