@@ -30,7 +30,7 @@ def random_date
              rand(60).second
 end
 
-def random from = 21, to = 30
+def random from = 1, to = 10
   rand from..to
 end
 
