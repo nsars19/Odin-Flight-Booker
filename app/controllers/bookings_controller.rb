@@ -9,6 +9,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
+      @booking.passengers.each do |passenger|
+        BookingMailer.with(user: passenger).thanks_for_booking.deliver_now
+      end
+
       redirect_to booking_path(@booking)
     else
       render new_booking_path
